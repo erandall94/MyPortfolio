@@ -3,14 +3,20 @@
   margin: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background: #ffffff;
-  color: #111111;
+  background: #1d4ed8;
+  color: #ffffff;
 }
 
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -20,23 +26,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .footer {
   padding: 1.5rem 1rem;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   text-align: center;
   font-size: 0.875rem;
-  color: #666666;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .name {
   font-size: clamp(2.5rem, 8vw, 6rem);
   font-weight: 700;
+  line-height: 1.05;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .nav {
   padding: 1.5rem 1rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
 }
 
 .nav-list {
@@ -49,13 +60,65 @@ body {
 
 .nav-link {
   font-size: 1rem;
-  color: #111111;
+  color: #ffffff;
   text-decoration: none;
   text-transform: lowercase;
+  display: inline-block;
+  padding: 0.5rem 0.25rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
   text-decoration: underline;
   text-underline-offset: 0.25em;
+}
+
+/* Tablet (iPad portrait & landscape) */
+@media (max-width: 1024px) {
+  .nav {
+    padding-top: max(2rem, env(safe-area-inset-top));
+  }
+
+  .nav-link {
+    font-size: 1.125rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .nav {
+    padding: 1rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .nav-list {
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.625rem 0.25rem;
+  }
+
+  .name {
+    font-size: clamp(2.25rem, 12vw, 3.5rem);
+  }
+
+  .footer {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Short landscape phones */
+@media (max-height: 480px) and (orientation: landscape) {
+  .nav {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+    padding-bottom: 0.75rem;
+  }
+
+  .footer {
+    padding-top: 0.75rem;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
 }
